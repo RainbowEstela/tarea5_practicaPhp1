@@ -17,14 +17,35 @@ use Navidad\controladores\ControladorUsuario;
     });
     //Fin Autcargar --
 
+
+
     //enrrutador
     if(isset($_SESSION["id"])) {
+
         if(isset($_REQUEST)) {
             //gestionar request
             if(isset($_REQUEST["accion"])) {
+
+                if(strcmp($_REQUEST["accion"],"mostrarRegalos") == 0) {
+
+                    //mostrar pagina principal
+                    ControladorRegalo::mostrarRegalos($_SESSION["id"]);
+
+                } elseif(strcmp($_REQUEST["accion"],"cerrarSesion") == 0) {
+
+                    //cerrar sesion
+                    ControladorUsuario::cerrarSesion();
+
+                } else {
+
+                    //si no es ninguna accion le mostramos la pagina principal
+                    ControladorRegalo::mostrarRegalos($_SESSION["id"]);
+
+                }
     
             } else {
-            
+                
+                //si no llega una accion pero esta logeado mostramos la pagina principal
                 ControladorRegalo::mostrarRegalos($_SESSION["id"]);
                 
             }
@@ -43,6 +64,9 @@ use Navidad\controladores\ControladorUsuario;
                 $password = $_REQUEST["password"];
 
                 ControladorUsuario::gestionarLogin($nombre,$password);
+            } else {
+                //enviar a logearse
+                ControladorUsuario::mostrarLogin();
             }
         } else {
             //enviar a logearse

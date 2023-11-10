@@ -10,7 +10,7 @@
             $conexionObjet = new ConexionBaseDeDatos();
             $conexion = $conexionObjet->getConexion();
 
-            $consulta = $conexion->prepare("SELECT id,nombre,destinatario,precio,estado,'year' FROM regalos WHERE idUsuario = ?");
+            $consulta = $conexion->prepare("SELECT id,nombre,destinatario,precio,estado,year FROM regalos WHERE idUsuario = ?");
             $consulta->bindValue(1,$idUsuario);
 
             $consulta->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Navidad\modelos\Regalo');

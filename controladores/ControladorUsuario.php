@@ -36,5 +36,14 @@
             }
 
         }
+
+        public static function cerrarSesion() {
+
+            session_destroy();
+
+            ControladorUsuario::mostrarLogin();
+
+        }
+
     }
 ?>
