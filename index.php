@@ -36,6 +36,13 @@ use Navidad\controladores\ControladorUsuario;
                     //cerrar sesion
                     ControladorUsuario::cerrarSesion();
 
+                } elseif(strcmp($_REQUEST["accion"],"peticionAddRegalo") == 0) {
+
+                    //añadir regalo
+                    $idUsuario = $_SESSION["id"];
+                    var_dump($idUsuario);
+                    var_dump($_REQUEST);
+
                 } else {
 
                     //si no es ninguna accion le mostramos la pagina principal
