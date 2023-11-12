@@ -39,9 +39,14 @@ use Navidad\controladores\ControladorUsuario;
                 } elseif(strcmp($_REQUEST["accion"],"peticionAddRegalo") == 0) {
 
                     //añadir regalo
+                    $nombre = $_REQUEST["nombre"];
+                    $destinatario = $_REQUEST["destinatario"];
+                    $precio = $_REQUEST["precio"];
+                    $estado = $_REQUEST["estado"];
+                    $year = $_REQUEST["year"];
                     $idUsuario = $_SESSION["id"];
-                    var_dump($idUsuario);
-                    var_dump($_REQUEST);
+
+                    ControladorRegalo::addRegalo($nombre,$destinatario,$precio,$estado,$year,$idUsuario);
 
                 } else {
 
@@ -77,6 +82,7 @@ use Navidad\controladores\ControladorUsuario;
             }
         } else {
             //enviar a logearse
+            
             ControladorUsuario::mostrarLogin();
         }
 

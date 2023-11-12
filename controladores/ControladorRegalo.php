@@ -9,6 +9,16 @@ use Navidad\vistas\VistaRegalo;
             $regalos = ModeloRegalo::regalosUsuario($_SESSION["id"]);
             VistaRegalo::render($regalos);
         }
+
+
+        public static function addRegalo($nombre,$destinatario,$precio,$estado,$year,$idUsuario) {
+
+            ModeloRegalo::addRegalo($nombre,$destinatario,$precio,$estado,$year,$idUsuario);
+
+            ControladorRegalo::mostrarRegalos();
+        }
     }
+
+
 
 ?>

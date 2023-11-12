@@ -83,7 +83,7 @@
                   </div>
 
                   <div class="form-floating">
-                    <input type="number" step="any" class="form-control" id="inputPrecio" name="destinatario" placeholder="tu nombre" required>
+                    <input type="number" step="any" class="form-control" id="inputPrecio" name="precio" placeholder="tu nombre" required>
                     <label for="inputPrecio">Precio</label>
                   </div>
 
