@@ -48,6 +48,30 @@ use Navidad\controladores\ControladorUsuario;
 
                     ControladorRegalo::addRegalo($nombre,$destinatario,$precio,$estado,$year,$idUsuario);
 
+                } elseif(strcmp($_REQUEST["accion"],"modificarRegaloForm") == 0) {
+                    //mostrar formulario de modificacion de un regalo
+                    $idRegalo = $_REQUEST["idRegalo"];
+
+                    ControladorRegalo::modificarRegaloForm($idRegalo);
+
+                } elseif(strcmp($_REQUEST["accion"],"modificarRegalo") == 0) {
+
+                    //datos del regalo
+                    $id = $_REQUEST["id"];
+                    $nombre = $_REQUEST["nombre"];
+                    $destinatario = $_REQUEST["destinatario"];
+                    $precio = $_REQUEST["precio"];
+                    $estado = $_REQUEST["estado"];
+                    $year = $_REQUEST["year"];
+
+                    ControladorRegalo::modificarRegalo($id,$nombre,$destinatario,$precio,$estado,$year);
+
+                } elseif(strcmp($_REQUEST["accion"],"borrarRegalo") == 0) {
+                    //borrar regalo
+                    $idRegalo = $_REQUEST["idRegalo"];
+
+                    ControladorRegalo::borrarRegalo($idRegalo);
+
                 } else {
 
                     //si no es ninguna accion le mostramos la pagina principal
@@ -82,7 +106,6 @@ use Navidad\controladores\ControladorUsuario;
             }
         } else {
             //enviar a logearse
-            
             ControladorUsuario::mostrarLogin();
         }
 

@@ -45,7 +45,12 @@
               echo' <td>'.$regalo->getPrecio().'</td>';
               echo' <td>'.$regalo->getEstado().'</td>';
               echo' <td>'.$regalo->getYear().'</td>';
-              echo' <td>'.$regalo->getId().'</td>';
+              echo' <td class="d-flex justify-content-center">
+                <a href="index.php?accion=borrarRegalo&idRegalo='.$regalo->getId().'"><button class="btn btn-danger">x</button></a>
+                <a href="index.php?accion=modificarRegaloForm&idRegalo='.$regalo->getId().'" class="px-2"><button class="btn btn-success"><img src="./vistas/imgs/configuracion.png" alt="modificar regalo" width="20px" height="20px"></button></a>
+                <a href="index.php?accion=mostrarEnlaces&idRegalo='.$regalo->getId().'"><button class="btn btn-primary">@</button></a>
+              </td>
+              ';
               echo'</tr>';
 
             }
@@ -120,4 +125,5 @@
         }
     }
 ?>
+
 
