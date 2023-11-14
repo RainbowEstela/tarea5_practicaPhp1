@@ -30,7 +30,7 @@
                 </div>
 
                 <div class="form-floating">
-                    <input type="number" step="any" class="form-control" id="inputPrecio" name="precio" placeholder="tu nombre" value="'.$regalo->getPrecio().'" required>
+                    <input type="number" step="any" class="form-control" id="inputPrecio" name="precio" placeholder="tu nombre" min="0" max="9999" value="'.$regalo->getPrecio().'" required>
                     <label for="inputPrecio">Precio</label>
                 </div>
 

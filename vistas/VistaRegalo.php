@@ -88,7 +88,7 @@
                   </div>
 
                   <div class="form-floating">
-                    <input type="number" step="any" class="form-control" id="inputPrecio" name="precio" placeholder="tu nombre" required>
+                    <input type="number" step="any" class="form-control" id="inputPrecio" name="precio" placeholder="tu nombre" min="0" max="9999" required>
                     <label for="inputPrecio">Precio</label>
                   </div>
 
