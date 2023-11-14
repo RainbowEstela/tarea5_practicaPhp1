@@ -41,8 +41,8 @@
 
             session_destroy();
 
-            ControladorUsuario::mostrarLogin();
-
+            header("Location: index.php");
+            die();
         }
 
     }

@@ -1,6 +1,7 @@
 <?php
     namespace Navidad;
 
+use Navidad\controladores\ControladorEnlace;
 use Navidad\controladores\ControladorRegalo;
 use Navidad\controladores\ControladorUsuario;
 
@@ -56,7 +57,7 @@ use Navidad\controladores\ControladorUsuario;
 
                 } elseif(strcmp($_REQUEST["accion"],"modificarRegalo") == 0) {
 
-                    //datos del regalo
+                    //datos del regalo a modificar
                     $id = $_REQUEST["id"];
                     $nombre = $_REQUEST["nombre"];
                     $destinatario = $_REQUEST["destinatario"];
@@ -71,6 +72,29 @@ use Navidad\controladores\ControladorUsuario;
                     $idRegalo = $_REQUEST["idRegalo"];
 
                     ControladorRegalo::borrarRegalo($idRegalo);
+
+                } elseif(strcmp($_REQUEST["accion"],"mostrarEnlaces") == 0) {
+                    
+                    //mostrar enlaces de un regalo
+                    $idRegalo = $_REQUEST["idRegalo"];
+
+                    ControladorEnlace::mostrarEnlaces($idRegalo);
+                
+                } elseif(strcmp($_REQUEST["accion"],"peticionAddEnlace") == 0) {
+
+                    $nombre = $_REQUEST["nombre"];
+                    $enlace = $_REQUEST["enlace"];
+                    $precio = $_REQUEST["precio"];
+                    $imagen = "";
+                    //comprobar si se mandó imagen
+                    if(isset($_REQUEST["imagen"])) {
+                        $imagen = $_REQUEST["imagen"];
+                    }
+
+                    $prioridad = $_REQUEST["prioridad"];
+                    $idRegalo = $_REQUEST["idRegalo"];
+
+                    ControladorEnlace::addEnlace($nombre,$enlace,$precio,$imagen,$prioridad,$idRegalo);
 
                 } else {
 
