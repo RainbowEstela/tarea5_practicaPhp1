@@ -17,8 +17,8 @@
           <div class="d-flex justify-content-end">
             <form class="form-inline" style="width:200px;">
               <div class="d-flex nowrap">
-                <input class="form-control mr-sm-2" type="number" placeholder="Buscar año" aria-label="Search" name="year" min=0 required>
-                <button class="btn btn btn-success my-2 my-sm-0" type="submit" name="accion" value="regalosPorYear">Buscar</button>
+                <input class="form-control" type="number" placeholder="Buscar año" aria-label="Search" name="year" min=0 required>
+                <button class="btn btn btn-success" type="submit" name="accion" value="regalosPorYear">Buscar</button>
               </div>
             </form> 
           </div>
