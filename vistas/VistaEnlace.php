@@ -2,7 +2,7 @@
     namespace Navidad\vistas;
 
     class VistaEnlace {
-        public static function render($enlaces,$idRegalo) {
+        public static function render($enlaces,$idRegalo,$orden = "") {
             include("cabecera.php");
 
 
@@ -27,8 +27,18 @@
                 <table class="table table-hover table-striped table-bordered">
                   <tr class="table-dark text-center">
                     <th>Nombre</th>
-                    <th>Enlace</th>
-                    <th>Precio</th>
+                    <th>Enlace</th>';
+              
+              if(strcmp($orden,"asc") == 0) {
+                echo '<th><a href="index.php?accion=enlacesDes&idRegalo='.$idRegalo.'" class="text-light text-decoration-none">Precio ^</a></th>';
+              } elseif (strcmp($orden,"des") == 0) {
+                echo '<th><a href="index.php?accion=enlacesAsc&idRegalo='.$idRegalo.'" class="text-light text-decoration-none">Precio v</a></th>';
+              } else {
+                echo '<th><a href="index.php?accion=enlacesAsc&idRegalo='.$idRegalo.'" class="text-light text-decoration-none">Precio ^ v</a></th>';
+              }
+                    
+
+              echo'
                     <th>Imagen</th>
                     <th>Prioridad</th>
                     <th>Acciones</th>
@@ -44,7 +54,7 @@
                 echo' <td>'.$enlace->getImagen().'</td>';
                 echo' <td>'.$enlace->getPrioridad().'</td>';
                 echo' <td class="d-flex justify-content-center">
-                  <a href="index.php?accion=borrarEnlace&idEnlace='.$enlace->getId().'"><button class="btn btn-danger">x</button></a>
+                  <a href="index.php?accion=borrarEnlace&idEnlace='.$enlace->getId().'&idRegalo='.$idRegalo.'"><button class="btn btn-danger">x</button></a>
                 </td>
                 ';
                 echo'</tr>';
@@ -117,6 +127,10 @@
   
             include("pie.php");
         }
+
+
+        
     }
 ?>
+
 

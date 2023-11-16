@@ -27,6 +27,24 @@
             return $regalos;
         }
 
+        public static function regalosUsuarioYear($idUsuario,$year) {
+            $conexionObjet = new ConexionBaseDeDatos();
+            $conexion = $conexionObjet->getConexion();
+
+            $consulta = $conexion->prepare("SELECT id,nombre,destinatario,precio,estado,year FROM regalos WHERE idUsuario = ? AND regalos.year = ?");
+            $consulta->bindValue(1,$idUsuario);
+            $consulta->bindValue(2,$year);
+
+            $consulta->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Navidad\modelos\Regalo');
+            $consulta->execute();
+
+            $regalos = $consulta->fetchAll();
+
+            $conexionObjet->cerrarConexion();
+
+            return $regalos;
+        }
+
         /**
          * devuelve el regalo de la misma id
          */

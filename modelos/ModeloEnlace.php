@@ -23,6 +23,41 @@
             return $enlaces;
         }
 
+        public static function enlacesRegaloAsc($idRegalo) {
+            $conexionObjet = new ConexionBaseDeDatos();
+            $conexion = $conexionObjet->getConexion();
+
+            $consulta = $conexion->prepare("SELECT id,nombre,enlace,precio,imagen,prioridad FROM enlaces WHERE idRegalo = ? ORDER BY precio ASC");
+            $consulta->bindValue(1,$idRegalo);
+
+            $consulta->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Navidad\modelos\Enlace');
+            $consulta->execute();
+
+            $enlaces = $consulta->fetchAll();
+
+            $conexionObjet->cerrarConexion();
+
+            return $enlaces;
+
+        }
+
+        public static function enlacesRegaloDes($idRegalo) {
+            $conexionObjet = new ConexionBaseDeDatos();
+            $conexion = $conexionObjet->getConexion();
+
+            $consulta = $conexion->prepare("SELECT id,nombre,enlace,precio,imagen,prioridad FROM enlaces WHERE idRegalo = ? ORDER BY precio DESC");
+            $consulta->bindValue(1,$idRegalo);
+
+            $consulta->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Navidad\modelos\Enlace');
+            $consulta->execute();
+
+            $enlaces = $consulta->fetchAll();
+
+            $conexionObjet->cerrarConexion();
+
+            return $enlaces;
+
+        }
 
 
         public static function addEnlace($nombre,$enlace,$precio,$imagen,$prioridad,$idRegalo) {
@@ -42,6 +77,18 @@
             $consulta->execute();
             $conexionObjet->cerrarConexion();
 
+        }
+
+        public static function borrarEnlace($idEnlace) {
+            $conexionObjet = new ConexionBaseDeDatos();
+            $conexion = $conexionObjet->getConexion();
+
+            $consulta = $conexion->prepare("DELETE FROM enlaces WHERE id = ?");
+
+            $consulta->bindValue(1,$idEnlace);
+
+            $consulta->execute();
+            $conexionObjet->cerrarConexion();
         }
     }
 ?>

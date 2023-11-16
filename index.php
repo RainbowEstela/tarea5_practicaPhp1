@@ -32,6 +32,13 @@ use Navidad\controladores\ControladorUsuario;
                     //mostrar pagina principal
                     ControladorRegalo::mostrarRegalos($_SESSION["id"]);
 
+                } elseif(strcmp($_REQUEST["accion"],"regalosPorYear") == 0) {
+
+                    //mostrar los regalos del año pasado por el formulario
+                    $year = $_REQUEST["year"];
+
+                    ControladorRegalo::mostrarRegalosYear($year);
+
                 } elseif(strcmp($_REQUEST["accion"],"cerrarSesion") == 0) {
 
                     //cerrar sesion
@@ -79,6 +86,19 @@ use Navidad\controladores\ControladorUsuario;
                     $idRegalo = $_REQUEST["idRegalo"];
 
                     ControladorEnlace::mostrarEnlaces($idRegalo);
+
+                } elseif(strcmp($_REQUEST["accion"],"enlacesAsc") == 0) {
+
+                    //mostrar enlaces de un regalo de forma ascendente por precio
+                    $idRegalo = $_REQUEST["idRegalo"];
+
+                    ControladorEnlace::mostrarEnlacesAsc($idRegalo);
+
+                } elseif(strcmp($_REQUEST["accion"],"enlacesDes") == 0) {
+                    //mostrar enlaces de un regalo de forma descendente por precio
+                    $idRegalo = $_REQUEST["idRegalo"];
+
+                    ControladorEnlace::mostrarEnlacesDes($idRegalo);
                 
                 } elseif(strcmp($_REQUEST["accion"],"peticionAddEnlace") == 0) {
 
@@ -94,7 +114,15 @@ use Navidad\controladores\ControladorUsuario;
                     $prioridad = $_REQUEST["prioridad"];
                     $idRegalo = $_REQUEST["idRegalo"];
 
+                    //añadir el nuevo enlace
                     ControladorEnlace::addEnlace($nombre,$enlace,$precio,$imagen,$prioridad,$idRegalo);
+
+                } elseif(strcmp($_REQUEST["accion"],"borrarEnlace") == 0) {
+
+                    $idEnlace = $_REQUEST["idEnlace"];
+                    $idRegalo = $_REQUEST["idRegalo"];
+
+                    ControladorEnlace::borrarEnlace($idEnlace,$idRegalo);
 
                 } else {
 

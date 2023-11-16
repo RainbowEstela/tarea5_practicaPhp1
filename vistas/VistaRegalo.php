@@ -14,7 +14,14 @@
           <div class="d-flex justify-content-center p-4">
             <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal">Añadir</button>  
           </div>
-          
+          <div class="d-flex justify-content-end">
+            <form class="form-inline" style="width:200px;">
+              <div class="d-flex nowrap">
+                <input class="form-control mr-sm-2" type="number" placeholder="Buscar año" aria-label="Search" name="year" min=0 required>
+                <button class="btn btn btn-success my-2 my-sm-0" type="submit" name="accion" value="regalosPorYear">Buscar</button>
+              </div>
+            </form> 
+          </div>
           ';
 
           if($regalos == null) {
@@ -25,7 +32,6 @@
           } else {
 
             echo '
-            <main class="container">
               <table class="table table-hover table-striped table-bordered">
                 <tr class="table-dark text-center">
                   <th>Nombre</th>

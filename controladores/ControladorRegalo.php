@@ -16,6 +16,11 @@ use Navidad\vistas\VistaRegalo;
             VistaRegalo::render($regalos);
         }
 
+        public static function mostrarRegalosYear($year) {
+            $regalos = ModeloRegalo::regalosUsuarioYear($_SESSION["id"],$year);
+            VistaRegalo::render($regalos);
+        }
+
         /**
          * crea un regalo en bd con los parametros pasados
          */
