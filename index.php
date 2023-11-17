@@ -19,6 +19,8 @@ use Navidad\controladores\ControladorUsuario;
     //Fin Autcargar --
 
 
+    
+
 
     //enrrutador
     if(isset($_SESSION["id"])) {
@@ -107,16 +109,17 @@ use Navidad\controladores\ControladorUsuario;
                     $precio = $_REQUEST["precio"];
                     $imagen = "";
                     //comprobar si se mandó imagen
-                    if(isset($_REQUEST["imagen"])) {
-                        $imagen = $_REQUEST["imagen"];
+                    if(isset($_FILES["imagen"])) {
+                        $imagen = $_FILES["imagen"];
                     }
 
+                    
                     $prioridad = $_REQUEST["prioridad"];
                     $idRegalo = $_REQUEST["idRegalo"];
 
                     //añadir el nuevo enlace
                     ControladorEnlace::addEnlace($nombre,$enlace,$precio,$imagen,$prioridad,$idRegalo);
-
+                    
                 } elseif(strcmp($_REQUEST["accion"],"borrarEnlace") == 0) {
 
                     $idEnlace = $_REQUEST["idEnlace"];

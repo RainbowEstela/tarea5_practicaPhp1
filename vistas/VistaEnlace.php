@@ -51,9 +51,13 @@
                 echo' <td>'.$enlace->getNombre().'</td>';
                 echo' <td>'.$enlace->getEnlace().'</td>';
                 echo' <td>'.$enlace->getPrecio().'</td>';
-                echo' <td>'.$enlace->getImagen().'</td>';
+                if($enlace->getImagen() == "") {
+                  echo' <td class="text-center text-danger">Imgen no disponible</td>';
+                } else {
+                  echo' <td><div class="d-flex justify-content-center"><img src="./Vistas/imgs/'.$enlace->getImagen().'" alt="" width="100px"></div></td>';
+                }
                 echo' <td>'.$enlace->getPrioridad().'</td>';
-                echo' <td class="d-flex justify-content-center">
+                echo' <td>
                   <a href="index.php?accion=borrarEnlace&idEnlace='.$enlace->getId().'&idRegalo='.$idRegalo.'"><button class="btn btn-danger">x</button></a>
                 </td>
                 ';
@@ -77,12 +81,12 @@
               <div class="modal-dialog">
                 <div class="modal-content">
                   <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Añadir un nuevo Regalo</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Añadir un nuevo enlace</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                   </div>
                   <div class="modal-body">
                   
-                  <form action="index.php" method="POST" id="formAddEnlace">
+                  <form action="index.php" method="POST" id="formAddEnlace" enctype="multipart/form-data">
                     <div class="form-floating">
                       <input type="text" class="form-control" id="inputNombre" name="nombre" placeholder="tu nombre" required>
                       <label for="inputNombre">Nombre del Enlace</label>
@@ -98,9 +102,9 @@
                       <label for="inputPrecio">Precio</label>
                     </div>
   
-                    <div class="form-floating">
-                      <input type="text" class="form-control" id="inputImg" name="imagen" placeholder="tu nombre">
-                      <label for="inputImg">Imagen</label>
+                    <div>
+                      <label for="inputImg" class="form-label">Imagen</label>
+                      <input type="file" class="form-control" name="imagen" id="inputImg">
                     </div>
   
                     <div class="form-floating">
@@ -132,5 +136,6 @@
         
     }
 ?>
+
 
 
